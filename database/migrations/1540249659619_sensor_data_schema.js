@@ -4,7 +4,7 @@ const Schema = use('Schema')
 
 class SensorDataSchema extends Schema {
   up () {
-    this.create('sensors', (table) => {
+    this.create('sensor_data', (table) => {
       table.increments()
       table.integer('user_id').unsigned()
       table.foreign('user_id').references('users.id')
@@ -14,7 +14,7 @@ class SensorDataSchema extends Schema {
   }
 
   down () {
-    this.drop('sensors')
+    this.drop('sensor_data')
   }
 }
 
