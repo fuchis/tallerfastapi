@@ -9,6 +9,7 @@ class SensorDataSchema extends Schema {
       table.integer('user_id').unsigned()
       table.foreign('user_id').references('users.id')
       table.text('data')
+      table.timestamps()
     })
   }
 
