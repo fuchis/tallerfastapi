@@ -1,5 +1,7 @@
 'use strict'
-const User = use('App/Models/User')
+const User = use('App/Models/User');
+const Hash = use('Hash');
+
 class UserController {
     async index({response}) {
         let users = await User.all();
@@ -44,6 +46,25 @@ class UserController {
         await user.save();
 
         return response.status(200).json(user);
+    }
+
+    async login({params, request, response}) {
+        const userInfo = request.only(['email', 'password']);
+        const user = await User.findBy('email', userInfo.email);
+    
+        if(!user) {
+            return response.status(404).json({data: "Usuario no encontrado!"});
+        }
+        const isSamePass = await Hash.verify(userInfo.password, user.password);
+
+
+        if(isSamePass) {
+            user.password = userInfo.password;            
+            return response.status(200).json(user);
+        }
+        
+        return response.status(422).json({Password: "Password incorrecta!"});
+
     }
 
     async delete({params, response }){

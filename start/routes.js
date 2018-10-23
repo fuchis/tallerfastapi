@@ -22,6 +22,7 @@ Route.get('/', () => {
 });
 
 Route.group(() => {
+  Route.post('login', 'UserController.login');
   Route.post('users', 'UserController.store');
   Route.get('users', 'UserController.index');
   Route.get('users/:id', 'UserController.show');
