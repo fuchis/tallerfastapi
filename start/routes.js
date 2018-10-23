@@ -27,4 +27,11 @@ Route.group(() => {
   Route.get('users/:id', 'UserController.show');
   Route.put('users/:id', 'UserController.update');
   Route.delete('users/:id', 'UserController.delete');
+
+  Route.post('sensor', 'SensorController.store');
+  Route.get('sensor', 'SensorController.index');
+  Route.get('sensor/:id', 'SensorController.show');
+  // Route.put('sensor/:id', 'SensorController.update');
+  // Route.delete('sensor/:id', 'SensorController.delete');
+
 }).prefix('api/v1');
