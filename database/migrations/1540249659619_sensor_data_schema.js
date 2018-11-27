@@ -12,7 +12,6 @@ class SensorDataSchema extends Schema {
       table.timestamps()
     })
   }
-
   down () {
     this.drop('sensor_data')
   }
