@@ -9,14 +9,11 @@ class SensorController {
     }
 
     async store({request, response }) {
-        const sensorInfo = request.only(['user_id', 'data'])
-
+        const sensorInfo = request.only(['user_id', 'data']);
         const sensor = new Sensor();
         sensor.user_id = sensorInfo.user_id;
-        sensor.data = sensorInfo.data;
-
-        await sensor.save()
-
+        sensor.data = JSON.stringify(sensorInfo.data);
+        await sensor.save();
         return response.status(201).json(sensor);
     }
 
