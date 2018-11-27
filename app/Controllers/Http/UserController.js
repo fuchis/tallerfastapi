@@ -74,7 +74,7 @@ class UserController {
         }
         await user.delete()
 
-        return response.status(204).json(null);
+        return response.status(204).json(null); 
     }
 
 }
